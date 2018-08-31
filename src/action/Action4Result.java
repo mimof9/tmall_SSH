@@ -23,6 +23,8 @@ import org.apache.struts2.convention.annotation.Results;
 	@Result(name="listProductImage", location="/admin/listProductImage.jsp"),
 	@Result(name="listProductImagePage", type="redirect", location="/admin_productImage_list?product.id=${productImage.product.id}"),
 	
+	@Result(name="editPropertyValue", location="/admin/editPropertyValue.jsp"),
+	@Result(name="editPropertyValuePage", type="redirect", location="/admin_propertyValue_edit?product.id=${propertyValue.product.id}"),
 	})
 public class Action4Result extends Action4Service{
 	

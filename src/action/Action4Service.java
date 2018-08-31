@@ -12,6 +12,7 @@ import service.CategoryService;
 import service.ProductImageService;
 import service.ProductService;
 import service.PropertyService;
+import service.PropertyValueService;
 
 public class Action4Service extends Action4Bean{
 	@Resource(name="base")
@@ -29,6 +30,8 @@ public class Action4Service extends Action4Bean{
 	ProductService productService;
 	@Autowired
 	ProductImageService productImageService;
+	@Autowired
+	PropertyValueService propertyValueService;
 	
 	/**
 	 * transient to persistent

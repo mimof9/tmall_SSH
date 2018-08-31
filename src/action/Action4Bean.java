@@ -6,6 +6,7 @@ import bean.Category;
 import bean.Product;
 import bean.ProductImage;
 import bean.Property;
+import bean.PropertyValue;
 
 public class Action4Bean extends Action4Pagination{
 	//·ÖÒ³
@@ -22,6 +23,9 @@ public class Action4Bean extends Action4Pagination{
 	protected ProductImage productImage;
 	protected List<ProductImage> productSingleImages;
 	protected List<ProductImage> productDetailImages;
+	
+	protected PropertyValue propertyValue;
+	protected List<PropertyValue> propertyValues;	
 	
 	public List<Category> getThecs() {
 		return thecs;
@@ -76,6 +80,18 @@ public class Action4Bean extends Action4Pagination{
 	}
 	public void setProductDetailImages(List<ProductImage> productDetailImages) {
 		this.productDetailImages = productDetailImages;
+	}
+	public PropertyValue getPropertyValue() {
+		return propertyValue;
+	}
+	public void setPropertyValue(PropertyValue propertyValue) {
+		this.propertyValue = propertyValue;
+	}
+	public List<PropertyValue> getPropertyValues() {
+		return propertyValues;
+	}
+	public void setPropertyValues(List<PropertyValue> propertyValues) {
+		this.propertyValues = propertyValues;
 	}
 	
 }
