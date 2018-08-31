@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import service.BaseService;
 import service.CategoryService;
+import service.PropertyService;
 
 public class Action4Service extends Action4Bean{
 	@Resource(name="base")
@@ -20,6 +21,8 @@ public class Action4Service extends Action4Bean{
 	
 	@Autowired
 	CategoryService categoryService;
+	@Autowired
+	PropertyService propertyService;
 	
 	/**
 	 * transient to persistent
