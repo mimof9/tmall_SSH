@@ -36,7 +36,7 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${ps}" var="p">
+                <c:forEach items="${propertys}" var="p">
                     <tr>
                         <td>${p.id}</td>
                         <td>${p.name}</td>

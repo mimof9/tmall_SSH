@@ -13,7 +13,7 @@ public class PropertyAction extends Action4Result {
 		int total = propertyService.total(category);
 		page.setTotal(total);
 		
-		ps = propertyService.list(page, category);
+		propertys = propertyService.list(page, category);
 		
 		page.setParam("&category.id="+category.getId());	//这样 就能保持分页的时候 category传回来
 		

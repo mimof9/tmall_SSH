@@ -3,6 +3,8 @@ package action;
 import java.util.List;
 
 import bean.Category;
+import bean.Product;
+import bean.ProductImage;
 import bean.Property;
 
 public class Action4Bean extends Action4Pagination{
@@ -11,8 +13,15 @@ public class Action4Bean extends Action4Pagination{
 	//Ìí¼Ó É¾³ý »ñÈ¡ ±à¼­
 	protected Category category;
 	
-	protected List<Property> ps;
+	protected List<Property> propertys;
 	protected Property property;
+	
+	protected List<Product> products;
+	protected Product product;
+	
+	protected ProductImage productImage;
+	protected List<ProductImage> productSingleImages;
+	protected List<ProductImage> productDetailImages;
 	
 	public List<Category> getThecs() {
 		return thecs;
@@ -26,17 +35,47 @@ public class Action4Bean extends Action4Pagination{
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	public List<Property> getPs() {
-		return ps;
+	public List<Property> getPropertys() {
+		return propertys;
 	}
-	public void setPs(List<Property> ps) {
-		this.ps = ps;
+	public void setPropertys(List<Property> propertys) {
+		this.propertys = propertys;
 	}
 	public Property getProperty() {
 		return property;
 	}
 	public void setProperty(Property property) {
 		this.property = property;
+	}
+	public List<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+	public Product getProduct() {
+		return product;
+	}
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+	public ProductImage getProductImage() {
+		return productImage;
+	}
+	public void setProductImage(ProductImage productImage) {
+		this.productImage = productImage;
+	}
+	public List<ProductImage> getProductSingleImages() {
+		return productSingleImages;
+	}
+	public void setProductSingleImages(List<ProductImage> productSingleImages) {
+		this.productSingleImages = productSingleImages;
+	}
+	public List<ProductImage> getProductDetailImages() {
+		return productDetailImages;
+	}
+	public void setProductDetailImages(List<ProductImage> productDetailImages) {
+		this.productDetailImages = productDetailImages;
 	}
 	
 }

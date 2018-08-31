@@ -99,6 +99,7 @@ public class BaseServiceImpl extends ServiceDelegateDAO implements BaseService{
 	@Override
 	public int total(Object parentObject) {
 		String parentName= parentObject.getClass().getSimpleName();
+		//×Ö·û´®Ê××ÖÄ¸Ð¡Ð´
         String parentNameWithFirstLetterLower = StringUtils.uncapitalize(parentName);
          
         String sqlFormat = "select count(*) from %s bean where bean.%s = ?";
