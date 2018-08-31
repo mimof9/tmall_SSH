@@ -3,10 +3,12 @@ package action;
 import java.util.List;
 
 import bean.Category;
+import bean.Order;
 import bean.Product;
 import bean.ProductImage;
 import bean.Property;
 import bean.PropertyValue;
+import bean.User;
 
 public class Action4Bean extends Action4Pagination{
 	//·ÖÒ³
@@ -25,7 +27,12 @@ public class Action4Bean extends Action4Pagination{
 	protected List<ProductImage> productDetailImages;
 	
 	protected PropertyValue propertyValue;
-	protected List<PropertyValue> propertyValues;	
+	protected List<PropertyValue> propertyValues;
+	
+	protected List<User> users;
+	
+	protected Order order;
+	protected List<Order> orders;
 	
 	public List<Category> getThecs() {
 		return thecs;
@@ -92,6 +99,24 @@ public class Action4Bean extends Action4Pagination{
 	}
 	public void setPropertyValues(List<PropertyValue> propertyValues) {
 		this.propertyValues = propertyValues;
+	}
+	public List<User> getUsers() {
+		return users;
+	}
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+	public Order getOrder() {
+		return order;
+	}
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+	public List<Order> getOrders() {
+		return orders;
+	}
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 	
 }

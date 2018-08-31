@@ -38,7 +38,7 @@
             </thead>
             
             <tbody>
-            	<c:forEach items="${os}" var="o">
+            	<c:forEach items="${orders}" var="o">
             		<tr>
                         <td>${o.id}</td>
                         <td>${o.statusDesc}</td>
@@ -54,7 +54,7 @@
                         <td>
                             <button oid=${o.id} class="orderPageCheckOrderItems btn btn-primary btn-xs">查看详情</button>
                             <c:if test="${o.status=='waitDelivery'}">
-                                <a href="admin_order_delivery?id=${o.id}"><button class="btn btn-primary btn-xs">发货</button> </a>                         
+                                <a href="admin_order_delivery?order.id=${o.id}"><button class="btn btn-primary btn-xs">发货</button> </a>                         
                             </c:if>
                         </td>
                     </tr>
@@ -65,6 +65,7 @@
                     			<table width="800px" align="center" class="orderPageOrderItemTable">
                     				<c:forEach items="${o.orderItems}" var="oi">
                     					<tr>
+                    						<td align="left"><img width="40px" height="40px" src="img/productSingle/${oi.product.firstProductImage.id}.jpg"></td>
                                             <td><a href="foreproduct?pid=${oi.product.id}"><span>${oi.product.name}</span></a></td>
                                             <td align="right"><span class="text-muted">${oi.number}个</span></td>
                                             <td align="right"><span class="text-muted">单价：￥${oi.product.promotePrice}</span></td>
