@@ -1,6 +1,8 @@
 package service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.criterion.DetachedCriteria;
@@ -130,6 +132,33 @@ public class BaseServiceImpl extends ServiceDelegateDAO implements BaseService{
         dc.add(Restrictions.eq(parentNameWithFirstLetterLower, parent));
         dc.addOrder(Order.desc("id"));
         return findByCriteria(dc, page.getStart(), page.getCount());
+	}
+
+	/*
+	 *需要注意的是，调用这个方法的时候，应该提供偶数个参数，否则会出错。
+	 *1. 把这个可变数量的参数，按照key,value,key,value,key,value的预判，取出来，并放进Map里
+	 *2. 遍历这个Map,借助DetachedCriteria，按照 key,value的方式设置查询条件
+	 *	2.1 当value是null的时候，需要使用dc.add(Restrictions.isNull(key)); 这样风格的代码进行查询。
+	 *3. 按照id倒排序
+	 *4. 返回查询结果
+	 */
+	@Override
+	public List list(Object... pairParms) {
+		HashMap<String,Object> m = new HashMap<>();
+        for (int i = 0; i < pairParms.length; i=i+2)
+            m.put(pairParms[i].toString(), pairParms[i+1]);
+ 
+        DetachedCriteria dc = DetachedCriteria.forClass(clazz);
+ 
+        Set<String> ks = m.keySet();
+        for (String key : ks) {
+            if(null==m.get(key))
+                dc.add(Restrictions.isNull(key));
+            else
+                dc.add(Restrictions.eq(key, m.get(key)));
+        }
+        dc.addOrder(Order.desc("id"));
+        return this.findByCriteria(dc);
 	}
 
 }

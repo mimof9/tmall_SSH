@@ -26,4 +26,9 @@ public interface BaseService {
 	public int total(Object parentObject); 
 	public List listByParent(Object parent);
 	public List list(Page page, Object parent);
+	
+	
+	//多条件查询
+	public List list(Object... pairParms);
+		
 }
