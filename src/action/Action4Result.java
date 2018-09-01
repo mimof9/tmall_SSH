@@ -47,6 +47,8 @@ import org.apache.struts2.convention.annotation.Results;
 	@Result(name="success", location="/success.jsp"),
 	@Result(name="fail", location="/fail.jsp"),
 	
+	//·ÖÀà
+	@Result(name="category", location="/fore/categoryPage.jsp"),
 	})
 public class Action4Result extends Action4Parameter{
 	

@@ -1,11 +1,18 @@
 package action;
 
+import java.util.Collections;
+
 import org.apache.struts2.convention.annotation.Action;
 import org.springframework.web.util.HtmlUtils;
 
 import com.opensymphony.xwork2.ActionContext;
 
 import bean.User;
+import comparator.ProductAllComparator;
+import comparator.ProductDateComparator;
+import comparator.ProductPriceComparator;
+import comparator.ProductReviewComparator;
+import comparator.ProductSaleCountComparator;
 
 public class ForeAction extends Action4Result {
 	@Action("forehome")
@@ -85,5 +92,33 @@ public class ForeAction extends Action4Result {
 	    
 	    ActionContext.getContext().getSession().put("user", user_session);
 	    return "success";
+	}
+	
+	@Action("forecategory")
+	public String category(){
+	    t2p(category);
+	    productService.fill(category);
+	    productService.setSaleAndReviewNumber(category.getProducts());      
+	      
+	    if(null != sort){
+	    switch(sort){
+	        case "review":
+	            Collections.sort(category.getProducts(),new ProductReviewComparator());
+	            break;
+	        case "date" :
+	            Collections.sort(category.getProducts(),new ProductDateComparator());
+	            break;
+	        case "saleCount" :
+	            Collections.sort(category.getProducts(),new ProductSaleCountComparator());
+	            break;
+	        case "price":
+	            Collections.sort(category.getProducts(),new ProductPriceComparator());
+	            break;
+	        case "all":
+	            Collections.sort(category.getProducts(),new ProductAllComparator());
+	            break;
+	        }
+	    }
+	    return "category";         
 	}
 }
