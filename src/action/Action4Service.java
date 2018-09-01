@@ -15,6 +15,7 @@ import service.ProductImageService;
 import service.ProductService;
 import service.PropertyService;
 import service.PropertyValueService;
+import service.ReviewService;
 import service.UserService;
 
 public class Action4Service extends Action4Bean{
@@ -41,6 +42,8 @@ public class Action4Service extends Action4Bean{
 	OrderService orderService;
 	@Autowired
 	OrderItemService orderItemService;
+	@Autowired
+	ReviewService reviewService;
 	
 	/**
 	 * transient to persistent

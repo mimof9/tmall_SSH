@@ -47,4 +47,43 @@ public class ForeAction extends Action4Result {
 		ActionContext.getContext().getSession().remove("user");
 		return "homePage";
 	}
+	
+	@Action("foreproduct")
+	public String product(){
+		t2p(product);
+		
+		productImageService.setFirstProdutImage(product);
+		productSingleImages = productImageService.list("product",product,"type",productImageService.type_single);
+		productDetailImages = productImageService.list("product",product,"type",productImageService.type_detail);
+		product.setProductSingleImages(productSingleImages);
+		product.setProductDetailImages(productDetailImages);
+		
+		productService.setSaleAndReviewNumber(product);
+
+		propertyValues = propertyValueService.listByParent(product);	//对于属性值 前台只能查看
+		reviews = reviewService.listByParent(product);
+		
+		return "product";
+	}
+	
+	@Action("forecheckLogin")
+	public String checkLogin(){
+		User u =(User) ActionContext.getContext().getSession().get("user");
+	    if(null == u)
+	    	return "fail";
+	    else
+	        return "success";
+	}
+	
+	@Action("foreloginAjax")
+	public String loginAjax(){
+		user.setName(HtmlUtils.htmlEscape(user.getName()));
+	    User user_session = userService.get(user.getName(),user.getPassword());
+	    
+	    if(null == user_session)
+	        return "fail";
+	    
+	    ActionContext.getContext().getSession().put("user", user_session);
+	    return "success";
+	}
 }

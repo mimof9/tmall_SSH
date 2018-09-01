@@ -8,14 +8,20 @@ import org.springframework.stereotype.Service;
 
 import bean.Category;
 import bean.Product;
+import service.OrderItemService;
 import service.ProductImageService;
 import service.ProductService;
+import service.ReviewService;
 
 @Service
 public class ProductServiceImpl extends BaseServiceImpl implements ProductService {
 
 	@Autowired
-    ProductImageService productImageService;	
+    ProductImageService productImageService;
+	@Autowired
+    OrderItemService orderItemService;
+    @Autowired
+    ReviewService reviewService;
 	
 	@Override
 	public void fill(List<Category> categorys) {
@@ -49,6 +55,20 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 			category.setProductsByRow(productsByRow);
 		}
 		
+	}
+
+	@Override
+	public void setSaleAndReviewNumber(Product product) {
+		int saleCount = orderItemService.total(product);
+        product.setSaleCount(saleCount);
+        int reviewCount = reviewService.total(product);
+        product.setReviewCount(reviewCount);
+	}
+
+	@Override
+	public void setSaleAndReviewNumber(List<Product> products) {
+		for (Product product : products)
+			setSaleAndReviewNumber(product);
 	}
 
 }

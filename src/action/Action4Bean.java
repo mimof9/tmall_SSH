@@ -8,6 +8,7 @@ import bean.Product;
 import bean.ProductImage;
 import bean.Property;
 import bean.PropertyValue;
+import bean.Review;
 import bean.User;
 
 public class Action4Bean extends Action4Pagination{
@@ -33,6 +34,9 @@ public class Action4Bean extends Action4Pagination{
 	//¶©µ¥
 	protected Order order;
 	protected List<Order> orders;
+	//ÆÀ¼Û
+	protected Review review;
+	protected List<Review> reviews;
 	
 	public List<Category> getThecs() {
 		return thecs;
@@ -123,5 +127,17 @@ public class Action4Bean extends Action4Pagination{
 	}
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
+	}
+	public Review getReview() {
+		return review;
+	}
+	public void setReview(Review review) {
+		this.review = review;
+	}
+	public List<Review> getReviews() {
+		return reviews;
+	}
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
 	}
 }

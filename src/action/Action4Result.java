@@ -40,6 +40,13 @@ import org.apache.struts2.convention.annotation.Results;
 	@Result(name="registerSuccessPage", type="redirect", location="/fore/registerSuccessPage.jsp"),
 	//登陆
 	@Result(name="loginPage", location="/fore/loginPage.jsp"),
+	//产品
+	@Result(name="product", location="/fore/productPage.jsp"),
+	
+	//返回成功 失败
+	@Result(name="success", location="/success.jsp"),
+	@Result(name="fail", location="/fail.jsp"),
+	
 	})
 public class Action4Result extends Action4Parameter{
 	
