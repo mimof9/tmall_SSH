@@ -34,11 +34,12 @@ import org.apache.struts2.convention.annotation.Results;
 	
 	//Ê×Ò³
 	@Result(name="home", location="/fore/homePage.jsp"),
-	
+	@Result(name="homePage", type="redirect", location="/forehome"),
 	//×¢²á
-	@Result(name="register", location="/fore/registerPage.jsp"),
-	@Result(name="registerSuccess", type="redirect", location="/fore/registerSuccessPage.jsp"),
-	
+	@Result(name="registerPage", location="/fore/registerPage.jsp"),
+	@Result(name="registerSuccessPage", type="redirect", location="/fore/registerSuccessPage.jsp"),
+	//µÇÂ½
+	@Result(name="loginPage", location="/fore/loginPage.jsp"),
 	})
 public class Action4Result extends Action4Parameter{
 	
