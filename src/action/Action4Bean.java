@@ -11,26 +11,26 @@ import bean.PropertyValue;
 import bean.User;
 
 public class Action4Bean extends Action4Pagination{
-	//分页
+	//分类 ：用于分页 添加 删除 获取 编辑
 	protected List<Category> thecs;
-	//添加 删除 获取 编辑
 	protected Category category;
-	
+	//属性
 	protected List<Property> propertys;
 	protected Property property;
-	
+	//产品
 	protected List<Product> products;
 	protected Product product;
-	
+	//产品图片
 	protected ProductImage productImage;
 	protected List<ProductImage> productSingleImages;
 	protected List<ProductImage> productDetailImages;
-	
+	//属性值
 	protected PropertyValue propertyValue;
 	protected List<PropertyValue> propertyValues;
-	
+	//用户
 	protected List<User> users;
-	
+	protected User user;
+	//订单
 	protected Order order;
 	protected List<Order> orders;
 	
@@ -106,6 +106,12 @@ public class Action4Bean extends Action4Pagination{
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public Order getOrder() {
 		return order;
 	}
@@ -118,5 +124,4 @@ public class Action4Bean extends Action4Pagination{
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
-	
 }
