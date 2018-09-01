@@ -7,6 +7,7 @@ import org.springframework.web.util.HtmlUtils;
 
 import com.opensymphony.xwork2.ActionContext;
 
+import bean.Product;
 import bean.User;
 import comparator.ProductAllComparator;
 import comparator.ProductDateComparator;
@@ -120,5 +121,15 @@ public class ForeAction extends Action4Result {
 	        }
 	    }
 	    return "category";         
+	}
+	
+	@Action("foresearch")
+	public String search(){
+	    products= productService.search(keyword,0,20);
+	    productService.setSaleAndReviewNumber(products);
+	    for (Product product : products)
+	        productImageService.setFirstProdutImage(product);  
+	     
+	    return "searchResult";
 	}
 }

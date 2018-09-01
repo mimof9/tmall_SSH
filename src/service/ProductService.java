@@ -13,4 +13,6 @@ public interface ProductService extends BaseService {
 	
 	public void setSaleAndReviewNumber(Product product);
     public void setSaleAndReviewNumber(List<Product> products);
+    
+    public List<Product> search(String keyword, int start, int count);
 }

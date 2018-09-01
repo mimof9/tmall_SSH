@@ -3,9 +3,9 @@
 
 <title>注册成功页</title>
 
-<%@include file="../include/fore/header.jsp" %>
-<%@include file="../include/fore/topnavigator.html" %>
-<%@include file="../include/fore/simpleSearchbar.html" %>
+<%@include file="/include/fore/header.jsp" %>
+<%@include file="/include/fore/topnavigator.html" %>
+<%@include file="/include/fore/simpleSearchbar.html" %>
 
 <style>
 	div.registerSuccessDiv {
@@ -20,8 +20,8 @@
 
 
 <div class="registerSuccessDiv">
-    <img src="../img/site/registerSuccess.png">
+    <img src="/tmall_SSH/img/site/registerSuccess.png">
         恭喜注册成功
 </div>
 
-<%@include file="../include/fore/footer.html" %>
+<%@include file="/include/fore/footer.html" %>

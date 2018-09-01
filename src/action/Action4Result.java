@@ -49,6 +49,9 @@ import org.apache.struts2.convention.annotation.Results;
 	
 	//·ÖÀà
 	@Result(name="category", location="/fore/categoryPage.jsp"),
+	//ËÑË÷
+	@Result(name="searchResult", location="/fore/searchResultPage.jsp"),
+	
 	})
 public class Action4Result extends Action4Parameter{
 	
