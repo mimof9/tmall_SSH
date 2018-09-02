@@ -300,5 +300,12 @@ public class ForeAction extends Action4Result {
 	    orderService.update(order);
 	    return "orderfinished";
 	}
-	 
+	
+	@Action("foredeleteOrder")
+	public String deleteOrder(){
+	    t2p(order);
+	    order.setStatus(OrderService.delete);
+	    orderService.update(order);
+	    return "success";      
+	}
 }

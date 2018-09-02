@@ -156,13 +156,13 @@
 	            var page="foredeleteOrder";
 	            $.post(
                     page,
-                    {"oid":deleteOrderid},
+                    {"order.id":deleteOrderid},
                     function(result){
                         if("success"==result){
                             $("table.orderListItemTable[oid="+deleteOrderid+"]").remove();
                         }
                         else{
-                            location.href="/fore/loginPage.jsp";
+                            location.href="/tmall_SSH/fore/loginPage.jsp";
                         }
                     }
 	            );
