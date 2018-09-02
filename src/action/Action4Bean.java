@@ -4,6 +4,7 @@ import java.util.List;
 
 import bean.Category;
 import bean.Order;
+import bean.OrderItem;
 import bean.Product;
 import bean.ProductImage;
 import bean.Property;
@@ -37,6 +38,9 @@ public class Action4Bean extends Action4Pagination{
 	//ÆÀ¼Û
 	protected Review review;
 	protected List<Review> reviews;
+	//¶©µ¥Ïî
+	protected OrderItem orderItem;
+	protected List<OrderItem> orderItems;
 	
 	public List<Category> getThecs() {
 		return thecs;
@@ -139,5 +143,17 @@ public class Action4Bean extends Action4Pagination{
 	}
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
+	}
+	public OrderItem getOrderItem() {
+		return orderItem;
+	}
+	public List<OrderItem> getOrderItems() {
+		return orderItems;
+	}
+	public void setOrderItem(OrderItem orderItem) {
+		this.orderItem = orderItem;
+	}
+	public void setOrderItems(List<OrderItem> orderItems) {
+		this.orderItems = orderItems;
 	}
 }

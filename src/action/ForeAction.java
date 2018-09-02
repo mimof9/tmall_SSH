@@ -1,12 +1,16 @@
 package action;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.springframework.web.util.HtmlUtils;
 
 import com.opensymphony.xwork2.ActionContext;
 
+import bean.Order;
+import bean.OrderItem;
 import bean.Product;
 import bean.User;
 import comparator.ProductAllComparator;
@@ -132,4 +136,109 @@ public class ForeAction extends Action4Result {
 	     
 	    return "searchResult";
 	}
+	
+	//立即购买 直接到结算页
+	@Action("forebuyone")
+	public String buyone(){
+		User user =(User) ActionContext.getContext().getSession().get("user");
+		boolean found = false;
+	    List<OrderItem> ois = orderItemService.list("user",user,"order", null);
+	    for (OrderItem oi : ois) {
+	        if(oi.getProduct().getId()==product.getId()){
+	            oi.setNumber(oi.getNumber()+num);
+	            orderItemService.update(oi);
+	            found = true;
+	            oiid = oi.getId();
+	            break;
+	        }
+	    }
+	    
+	    if(!found){
+	        OrderItem oi = new OrderItem();
+	        oi.setUser(user);
+	        oi.setNumber(num);
+	        oi.setProduct(product);
+	        orderItemService.save(oi);
+	        oiid = oi.getId();
+	    }
+		
+		return "settleAccountPage";
+	}
+	
+	//结算
+	@Action("foresettle")
+	public String settle(){
+		orderItems = new ArrayList<>();
+	    for (int oiid : oiids) {
+	        OrderItem oi= (OrderItem) orderItemService.get(oiid);
+	        total +=oi.getProduct().getPromotePrice()*oi.getNumber();
+	        orderItems.add(oi);
+	        productImageService.setFirstProdutImage(oi.getProduct());
+	    }
+	      
+	    ActionContext.getContext().getSession().put("orderItems", orderItems);
+		return "settleAccount";
+	}
+	
+	//加入购物车
+	@Action("foreaddCart")
+	public String addCart() {
+	    User user =(User) ActionContext.getContext().getSession().get("user");
+	    boolean found = false;
+	    List<OrderItem> ois = orderItemService.list("user",user,"order", null);
+	    for (OrderItem oi : ois) {
+	        if(oi.getProduct().getId()==product.getId()){
+	            oi.setNumber(oi.getNumber()+num);
+	            orderItemService.update(oi);
+	            found = true;
+	            break;
+	        }
+	    }      
+	      
+	    if(!found){
+	        OrderItem oi = new OrderItem();
+	        oi.setUser(user);
+	        oi.setNumber(num);
+	        oi.setProduct(product);
+	        orderItemService.save(oi);
+	    }
+	    return "success";
+	}
+	
+	//加入购物车
+	@Action("forecart")
+	public String cart(){
+		User user = (User) ActionContext.getContext().getSession().get("user");
+		orderItems = orderItemService.list("user",user,"order",null);
+		for (OrderItem orderItem : orderItems)
+	        productImageService.setFirstProdutImage(orderItem.getProduct());
+		return "shoppingcart";
+	}
+	
+	//购物车页修改订单项数量
+	@Action("forechangeOrderItem")
+	public String changeOrderItem(){
+		User user = (User) ActionContext.getContext().getSession().get("user");
+    	if(null==user)
+			return "fail";
+    	
+    	t2p(product);
+    	List<OrderItem> ois = orderItemService.list("user",user,"order",null,"product",product);
+    	OrderItem oi = ois.get(0);
+    	oi.setNumber(num);
+    	orderItemService.update(oi);
+    	
+		return "success";
+	}
+	
+	@Action("foredeleteOrderItem")
+    public String deleteOrderItem(){
+		User user = (User) ActionContext.getContext().getSession().get("user");
+		if(null==user)
+			return "fail";
+		
+        orderItemService.delete(orderItem);
+        return "success";
+    }
+	
 }

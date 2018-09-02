@@ -51,6 +51,11 @@ import org.apache.struts2.convention.annotation.Results;
 	@Result(name="category", location="/fore/categoryPage.jsp"),
 	//ËÑË÷
 	@Result(name="searchResult", location="/fore/searchResultPage.jsp"),
+	//½áËã
+	@Result(name="settleAccount", location="/fore/settleAccountPage.jsp"),
+	@Result(name="settleAccountPage", type="redirect", location="/foresettle?oiids=${oiid}"),
+	//¹ºÎï³µ
+	@Result(name="shoppingcart", location="/fore/shoppingcartPage.jsp"),
 	
 	})
 public class Action4Result extends Action4Parameter{
