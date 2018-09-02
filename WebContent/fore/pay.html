@@ -55,12 +55,12 @@
 
 <body>
 	<div class="payDiv">
-		<img class="logo" src="img/site/simpleLogo.png">
+		<img class="logo" src="/tmall_SSH/img/site/simpleLogo.png">
 		
 		<div class="saoyisaoText">扫一扫付款(元)</div>
 		<div class="price">￥<fmt:formatNumber type="number" value="${param.total}" minFractionDigits="2"/></div>
 		<div>
-			<img src="img/site/alipay2wei.png" class="erweima">
+			<img src="/tmall_SSH/img/site/alipay2wei.png" class="erweima">
 		</div>
 		<a href="/tmall_SSH/forepaysuccess?order.id=${param.oid}&total=${param.total}">
 			<button class="payButton" type="button">确认支付</button>

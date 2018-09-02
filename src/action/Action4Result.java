@@ -61,6 +61,13 @@ import org.apache.struts2.convention.annotation.Results;
 	@Result(name="payPage", type="redirect", location="/forepay?total=${total}"),
 	//支付成功页
 	@Result(name="paysuccess", location="/fore/paySuccessPage.jsp"),
+	//我的订单
+	@Result(name="myorder", location="/fore/myorderPage.jsp"),
+	//确认收货
+	@Result(name="confirmPay", location="/fore/confirmPage.jsp"),
+	//确认收货成功 确认收货后 跳转到finished 但是订单状态是等待评价
+	@Result(name="orderfinished", location="/fore/orderFinishedPage.jsp"),
+	
 	
 	})
 public class Action4Result extends Action4Parameter{

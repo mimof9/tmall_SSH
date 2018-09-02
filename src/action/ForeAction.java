@@ -277,4 +277,28 @@ public class ForeAction extends Action4Result {
 		return "paysuccess";
 	}
 	
+	@Action("foremyorder")
+	public String myorder() {
+	    User user =(User) ActionContext.getContext().getSession().get("user");
+	    orders= orderService.listByUserWithoutDelete(user);
+	    orderItemService.fill(orders);
+	    return "myorder";
+	}  
+	
+	@Action("foreconfirmPay")
+	public String confirmPay() {
+	    t2p(order);
+	    orderItemService.fill(order);
+	    return "confirmPay";       
+	}
+	
+	@Action("foreorderfinished")
+	public String orderfinished() {
+	    t2p(order);
+	    order.setStatus(OrderService.waitReview);
+	    order.setConfirmDate(new Date());
+	    orderService.update(order);
+	    return "orderfinished";
+	}
+	 
 }

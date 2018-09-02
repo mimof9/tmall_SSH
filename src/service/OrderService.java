@@ -4,6 +4,7 @@ import java.util.List;
 
 import bean.Order;
 import bean.OrderItem;
+import bean.User;
 
 public interface OrderService extends BaseService {
 	public static final String waitPay = "waitPay";
@@ -14,4 +15,6 @@ public interface OrderService extends BaseService {
     public static final String delete = "delete"; 
     
     public float createOrder(Order order, List<OrderItem> ois);
+    
+    public List<Order> listByUserWithoutDelete(User user);
 }
