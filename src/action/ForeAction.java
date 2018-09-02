@@ -308,4 +308,36 @@ public class ForeAction extends Action4Result {
 	    orderService.update(order);
 	    return "success";      
 	}
+	
+	@Action("forereview")
+	public String review() {
+	    t2p(order);
+	    orderItemService.fill(order);
+	    product = order.getOrderItems().get(0).getProduct();
+	    reviews = reviewService.listByParent(product);
+	    productService.setSaleAndReviewNumber(product);
+	    return "review";       
+	}
+	@Action("foredoreview")
+	public String doreview() {
+		t2p(order);
+	    t2p(product);
+	     
+	    order.setStatus(OrderService.finish);
+	     
+	    String content = review.getContent();
+	    content = HtmlUtils.htmlEscape(content);    
+	    User user =(User) ActionContext.getContext().getSession().get("user");     
+	    review.setContent(content);
+	    review.setProduct(product);
+	    review.setCreateDate(new Date());
+	    review.setUser(user);
+	     
+	    reviewService.save(review);
+	    orderService.update(order);
+	      
+	    showonly = true;
+	    return "reviewPage";      
+	}
+	
 }

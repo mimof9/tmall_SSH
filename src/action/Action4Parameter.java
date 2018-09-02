@@ -15,6 +15,8 @@ public class Action4Parameter extends Action4Service{
     protected int[] oiids;
     //结算页面显示的总金额
     protected float total;
+    //是否展示其他用户评价
+    protected boolean showonly;
 
 	public String getMsg() {
 		return msg;
@@ -70,6 +72,14 @@ public class Action4Parameter extends Action4Service{
 
 	public void setTotal(float total) {
 		this.total = total;
+	}
+
+	public boolean isShowonly() {
+		return showonly;
+	}
+
+	public void setShowonly(boolean showonly) {
+		this.showonly = showonly;
 	}
 	
 }

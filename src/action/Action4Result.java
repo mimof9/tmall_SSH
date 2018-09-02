@@ -67,6 +67,9 @@ import org.apache.struts2.convention.annotation.Results;
 	@Result(name="confirmPay", location="/fore/confirmPage.jsp"),
 	//确认收货成功 确认收货后 跳转到finished 但是订单状态是等待评价
 	@Result(name="orderfinished", location="/fore/orderFinishedPage.jsp"),
+	//评价
+	@Result(name="review", location="/fore/reviewPage.jsp"),
+	@Result(name="reviewPage", type="redirect", location="/forereview?order.id=${order.id}&showonly=${showonly}"),
 	
 	
 	})
