@@ -56,7 +56,7 @@
                     </tr>
                     <tr>
                         <td>库存</td>
-                        <td><input id="stock"  value="${product.stock}" name="sproduct.tock" type="text" class="form-control"></td>
+                        <td><input id="stock"  value="${product.stock}" name="product.stock" type="text" class="form-control"></td>
                     </tr>
                                          
                     <tr>
